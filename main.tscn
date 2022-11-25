@@ -1,0 +1,283 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://img/types/normal.png" type="Texture" id=2]
+[ext_resource path="res://font/Matrix Regular Small Caps.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://img/levels/1.png" type="Texture" id=4]
+[ext_resource path="res://img/attributes/LIGHT.png" type="Texture" id=5]
+[ext_resource path="res://img/splash/icon.png" type="Texture" id=6]
+[ext_resource path="res://theme.tres" type="Theme" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 3 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 7 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRectTop" type="ColorRect" parent="."]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1003.0
+margin_bottom = 27.0
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[node name="CardMenuButton" type="MenuButton" parent="TextureRectTop"]
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 119.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 2 )
+text = "New Card"
+flat = false
+items = [ "Normal Monster", null, 0, false, false, 0, 0, null, "", false, "Effect Monster", null, 0, false, false, 1, 0, null, "", false, "Fusion Monster", null, 0, false, false, 2, 0, null, "", false, "Ritual Monster", null, 0, false, false, 3, 0, null, "", false, "Spell", null, 0, false, false, 4, 0, null, "", false, "Trap", null, 0, false, false, 5, 0, null, "", false ]
+
+[node name="OpenMenuButton" type="MenuButton" parent="TextureRectTop"]
+margin_left = 126.0
+margin_top = 6.0
+margin_right = 233.0
+margin_bottom = 24.0
+focus_mode = 2
+custom_fonts/font = SubResource( 2 )
+text = "Open"
+flat = false
+items = [ "Cards Folder", null, 0, false, false, 0, 0, null, "", false, "Artworks Folder", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="TextureRectBot" type="ColorRect" parent="."]
+margin_left = -1.0
+margin_top = 667.0
+margin_right = 1003.0
+margin_bottom = 702.0
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[node name="Control1" type="Control" parent="."]
+margin_left = 498.0
+margin_top = 29.0
+margin_right = 982.0
+margin_bottom = 675.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control1"]
+margin_left = 44.0
+margin_top = 94.0
+margin_right = 162.0
+margin_bottom = 266.0
+custom_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Control1/HBoxContainer"]
+margin_right = 118.0
+margin_bottom = 22.0
+text = "Name"
+
+[node name="ImageLabel" type="Label" parent="Control1/HBoxContainer"]
+margin_top = 30.0
+margin_right = 118.0
+margin_bottom = 52.0
+text = "Image"
+
+[node name="AttributeLabel" type="Label" parent="Control1/HBoxContainer"]
+margin_top = 60.0
+margin_right = 118.0
+margin_bottom = 82.0
+text = "Attribute"
+
+[node name="LevelLabel" type="Label" parent="Control1/HBoxContainer"]
+margin_top = 90.0
+margin_right = 118.0
+margin_bottom = 112.0
+text = "Level"
+
+[node name="AtkLabel" type="Label" parent="Control1/HBoxContainer"]
+margin_top = 120.0
+margin_right = 118.0
+margin_bottom = 142.0
+text = "Attack"
+
+[node name="DefLabel" type="Label" parent="Control1/HBoxContainer"]
+margin_top = 150.0
+margin_right = 118.0
+margin_bottom = 172.0
+text = "Defence"
+
+[node name="Control2" type="Control" parent="Control1"]
+margin_left = 181.0
+margin_top = 67.0
+margin_right = 431.0
+margin_bottom = 296.0
+
+[node name="NameLineEdit" type="LineEdit" parent="Control1/Control2"]
+margin_top = 28.0
+margin_right = 250.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 250, 25 )
+
+[node name="ImageBtn" type="Button" parent="Control1/Control2"]
+margin_top = 57.0
+margin_right = 150.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 100, 25 )
+text = "Open"
+
+[node name="AttributeMenuButton" type="MenuButton" parent="Control1/Control2"]
+margin_top = 87.0
+margin_right = 150.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 100, 25 )
+flat = false
+items = [ "DARK", null, 0, false, false, 0, 0, null, "", false, "DIVINE", null, 0, false, false, 1, 0, null, "", false, "EARTH", null, 0, false, false, 2, 0, null, "", false, "FIRE", null, 0, false, false, 3, 0, null, "", false, "LIGHT", null, 0, false, false, 4, 0, null, "", false, "WATER", null, 0, false, false, 5, 0, null, "", false, "WIND", null, 0, false, false, 6, 0, null, "", false ]
+
+[node name="LevelMenuButton" type="MenuButton" parent="Control1/Control2"]
+margin_top = 117.0
+margin_right = 150.0
+margin_bottom = 142.0
+rect_min_size = Vector2( 100, 25 )
+focus_mode = 2
+flat = false
+items = [ "1", null, 0, false, false, 0, 0, null, "", false, "2", null, 0, false, false, 1, 0, null, "", false, "3", null, 0, false, false, 2, 0, null, "", false, "4", null, 0, false, false, 3, 0, null, "", false, "5", null, 0, false, false, 4, 0, null, "", false, "6", null, 0, false, false, 5, 0, null, "", false, "7", null, 0, false, false, 6, 0, null, "", false, "8", null, 0, false, false, 7, 0, null, "", false, "9", null, 0, false, false, 8, 0, null, "", false, "10", null, 0, false, false, 9, 0, null, "", false, "11", null, 0, false, false, 10, 0, null, "", false, "12", null, 0, false, false, 11, 0, null, "", false ]
+
+[node name="AtkLineEdit" type="LineEdit" parent="Control1/Control2"]
+margin_top = 147.0
+margin_right = 106.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 100, 25 )
+text = "0"
+
+[node name="DefLineEdit" type="LineEdit" parent="Control1/Control2"]
+margin_top = 177.0
+margin_right = 106.0
+margin_bottom = 202.0
+rect_min_size = Vector2( 100, 25 )
+text = "0"
+
+[node name="RefreshArtworkListBtn" type="Button" parent="Control1"]
+margin_left = 339.0
+margin_top = 277.0
+margin_right = 432.0
+margin_bottom = 305.0
+custom_fonts/font = SubResource( 3 )
+text = "Refresh"
+
+[node name="ImageList" type="ItemList" parent="Control1"]
+margin_left = 44.0
+margin_top = 310.0
+margin_right = 433.0
+margin_bottom = 553.0
+
+[node name="SaveBtn" type="Button" parent="Control1"]
+margin_left = 45.0
+margin_top = 561.0
+margin_right = 195.0
+margin_bottom = 595.0
+rect_min_size = Vector2( 100, 30 )
+text = "Save"
+
+[node name="LogoTexture" type="TextureRect" parent="Control1"]
+margin_left = 44.0
+margin_top = -21.0
+margin_right = 318.0
+margin_bottom = 253.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CardTexture" type="TextureRect" parent="."]
+margin_left = 71.0
+margin_top = 62.0
+margin_right = 469.0
+margin_bottom = 642.0
+texture = ExtResource( 2 )
+
+[node name="AtkValueLabel" type="Label" parent="CardTexture"]
+margin_left = 41.0
+margin_top = 499.0
+margin_right = 177.0
+margin_bottom = 547.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DefValueLabel" type="Label" parent="CardTexture"]
+margin_left = 222.0
+margin_top = 499.0
+margin_right = 358.0
+margin_bottom = 547.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AttributeTexture" type="TextureRect" parent="CardTexture"]
+margin_left = 347.0
+margin_top = 451.0
+margin_right = 382.0
+margin_bottom = 486.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="LevelTexture" type="TextureRect" parent="CardTexture"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.0
+margin_top = 173.0
+margin_right = 198.0
+margin_bottom = 195.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="CardArtTexture" type="TextureRect" parent="CardTexture"]
+margin_left = 9.0
+margin_top = 10.0
+margin_right = 390.0
+margin_bottom = 416.0
+expand = true
+
+[node name="OpenFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -338.0
+margin_top = -277.0
+margin_right = 338.0
+margin_bottom = 277.0
+popup_exclusive = true
+window_title = "Open a File"
+mode = 0
+access = 2
+current_dir = "/Users/vladi/Documents/Yugioh Anime Card Maker"
+current_path = "/Users/vladi/Documents/Yugioh Anime Card Maker/"
+
+[node name="NotificationDialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -445.5
+margin_top = -58.5
+margin_right = 445.5
+margin_bottom = 58.5
+popup_exclusive = true
+window_title = ""
+dialog_text = "Please enter card name"

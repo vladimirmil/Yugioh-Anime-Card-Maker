@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="Yugioh Anime Card Maker"
+config/description="Create anime style yugioh cards"
+run/main_scene="res://main.tscn"
+boot_splash/image="res://img/splash/yugiohlogo.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://img/splash/icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[display]
+
+window/size/width=1000
+window/size/height=700
+window/size/resizable=false
+window/energy_saving/keep_screen_on=false
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.137255, 0.137255, 0.137255, 1 )
+environment/default_environment="res://default_env.tres"
