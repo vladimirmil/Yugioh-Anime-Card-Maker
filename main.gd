@@ -7,7 +7,7 @@ const cardFusion = preload("res://img/types/fusion.png")
 const cardRitual = preload("res://img/types/ritual.png")
 const cardSpell = preload("res://img/types/spell.png")
 const cardTrap = preload("res://img/types/trap.png")
-# LEVEL TRXTURES
+# LEVEL TEXTURES
 const level1 = preload("res://img/levels/1.png")
 const level2 = preload("res://img/levels/2.png")
 const level3 = preload("res://img/levels/3.png")
@@ -30,20 +30,21 @@ const waterAttr = preload("res://img/attributes/WATER.png")
 const windAttr = preload("res://img/attributes/WIND.png")
 
 
-# ATK DEF
+# INPUT
 onready var atkSetValue = $Control1/Control2/AtkLineEdit
 onready var defSetValue = $Control1/Control2/DefLineEdit
-onready var atkValue = $CardTexture/AtkValueLabel
-onready var defValue = $CardTexture/DefValueLabel
-# ATTRIBUTE LEVEL NEW AND OPEN MENU
-onready var cardMenuButton = $TextureRectTop/CardMenuButton
+onready var nameLineEdit = $Control1/Control2/NameLineEdit
+onready var typeMenuButton = $Control1/Control2/TypeMenuButton
 onready var openMenuButton = $TextureRectTop/OpenMenuButton
-onready var cardTexture = $CardTexture
 onready var attributeMenuButton = $Control1/Control2/AttributeMenuButton
 onready var levelMenuButton = $Control1/Control2/LevelMenuButton
-onready var attributeTexture = $CardTexture/AttributeTexture
-onready var levelTexture = $CardTexture/LevelTexture
+# ATK DEF OUTPUT
+onready var atkValue = $CardTexture/AtkValueLabel
+onready var defValue = $CardTexture/DefValueLabel
 # IMAGE
+onready var cardTexture = $CardTexture
+onready var levelTexture = $CardTexture/LevelTexture
+onready var attributeTexture = $CardTexture/AttributeTexture
 onready var imageBtn = $Control1/Control2/ImageBtn
 onready var imageList = $Control1/ImageList
 onready var cardArtTexture = $CardTexture/CardArtTexture
@@ -52,21 +53,18 @@ onready var refreshArtworkListBtn = $Control1/RefreshArtworkListBtn
 onready var fileDialog = $OpenFileDialog
 # SAVE
 onready var saveBtn = $Control1/SaveBtn
-onready var nameLineEdit = $Control1/Control2/NameLineEdit
+# POPUP
 onready var notificationDialog = $NotificationDialog
-
 
 
 var cardArray : Array = []
 var levelArray : Array = []
 var attributesArray : Array = []
 var saveFile : String = ""
-
 var mainDirectory : String = ""
 var savePath : String = ""
 var cardArtworkPath : String = ""
 var pathsArray : Array = []
-
 var saveTimeDelay : float = 0.1
 
 
@@ -89,7 +87,7 @@ func _ready() -> void:
 		level12,
 	]
 	
-	# Sets up file dialog starting directory and makes "x" invisible
+	# Sets up file dialog starting directory and makes x button invisible
 	fileDialog.get_close_button().visible = false
 	fileDialog.window_title = ""
 	fileDialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
@@ -101,19 +99,21 @@ func _ready() -> void:
 	cardArtworkPath = mainDirectory + "/Artwork"
 	pathsArray = [mainDirectory, savePath, cardArtworkPath]
 	
-	# Creates folders in documents if they do not exists
+	# Creates folders in Documents if they do not exists
 	var dir = Directory.new()
 	for i in range(0, pathsArray.size(), 1):
 		if dir.open(pathsArray[i]) != OK:
 			dir.make_dir(pathsArray[i])
 	
 	# Init images
+	on_new_type_id_pressed(0)
 	on_attribute_id_pressed(0)
 	on_level_id_pressed(0)
 	
 	getDirectoryContents(cardArtworkPath)
 
- 
+
+ # Hides attribute, level, atk and def when type is spell or trap
 func cardVisibilityHandler(value : int) -> void:
 	if value > 3:
 		attributeTexture.visible = false
@@ -135,6 +135,7 @@ func cardVisibilityHandler(value : int) -> void:
 		defSetValue.editable = true
 
 
+# Adds file names to "imageList" itemList
 func getDirectoryContents(path : String) -> void:
 	imageList.clear()
 	var dir = Directory.new()
@@ -151,7 +152,7 @@ func getDirectoryContents(path : String) -> void:
 
 
 func connectSignals() -> void:
-	cardMenuButton.get_popup().connect("id_pressed", self, "on_new_id_pressed")
+	typeMenuButton.get_popup().connect("id_pressed", self, "on_new_type_id_pressed")
 	openMenuButton.get_popup().connect("id_pressed", self, "on_open_id_pressed")
 	atkSetValue.connect("text_changed", self, "on_atk_text_changed")
 	defSetValue.connect("text_changed", self, "on_def_text_changed")
@@ -164,11 +165,14 @@ func connectSignals() -> void:
 	refreshArtworkListBtn.connect("pressed", self, "on_refresh_list_pressed")
 
 
-func on_new_id_pressed(value : int) -> void:
+# Changes texture and type of a card 
+func on_new_type_id_pressed(value : int) -> void:
 	cardVisibilityHandler(value)
 	cardTexture.texture = cardArray[value]
+	typeMenuButton.text = typeMenuButton.get_popup().get_item_text(value)
 
 
+# Opens directory
 func on_open_id_pressed(value : int) -> void:
 	if value == 0:
 		OS.shell_open(savePath)
@@ -184,21 +188,25 @@ func on_def_text_changed(value : String) -> void:
 	defValue.text = value
 
 
+# Changes attribute texture
 func on_attribute_id_pressed(value : int) -> void:
 	attributeTexture.texture = attributesArray[value]
 	attributeMenuButton.text = attributeMenuButton.get_popup().get_item_text(value)
 
 
+# Changes level texture
 func on_level_id_pressed(value : int) -> void:
 	levelTexture.texture = levelArray[value]
 	levelMenuButton.text = levelMenuButton.get_popup().get_item_text(value)
 
 
+# Opens up file dialog for manualy selecting card artwork 
 func on_image_btn_pressed() -> void:
 	fileDialog.popup()
 
 
-func on_file_selected(value) -> void:
+# Sets the texture of artwork when manualy selecting card artwork 
+func on_file_selected(value : String) -> void:
 	var img = Image.new()
 	var tex = ImageTexture.new()
 	img.load(value)
@@ -206,19 +214,17 @@ func on_file_selected(value) -> void:
 	cardArtTexture.texture = tex
 
 
+# Takes a screenshot of the card and saves it to Documents\YugiohCardMaker\Cards
 func on_save_pressed() -> void:
 	if nameLineEdit.text != "":
-		# Sets path and file name
 		saveFile = savePath + "/" + nameLineEdit.text + ".png"
-		
-		# Takes a screenshot of an area defined by region
-		var region = Rect2(
+		var region : Rect2 = Rect2(
 			cardTexture.rect_position.x, 
-			cardTexture.rect_position.y - 4, 
+			cardTexture.rect_position.y - 4, # -4? Godot bug?
 			cardTexture.rect_size.x,
 			cardTexture.rect_size.y
 			)
-		var image = get_viewport().get_texture().get_data().get_rect(region)
+		var image : Object = get_viewport().get_texture().get_data().get_rect(region)
 		image.flip_y()
 		if image.save_png(saveFile) == OK:
 			notificationDialog.dialog_text = "Image saved succesifuly to " + savePath
@@ -231,6 +237,7 @@ func on_save_pressed() -> void:
 		notificationDialog.popup()
 
 
+# Changes card artwork when pressed list item is pressed
 func on_image_item_list_selected(value : int) -> void:
 	var artPath : String = cardArtworkPath + "/" + imageList.get_item_text(value)
 	on_file_selected(artPath)

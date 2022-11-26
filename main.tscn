@@ -35,20 +35,10 @@ margin_right = 1003.0
 margin_bottom = 27.0
 color = Color( 0.129412, 0.129412, 0.129412, 1 )
 
-[node name="CardMenuButton" type="MenuButton" parent="TextureRectTop"]
-margin_left = 12.0
-margin_top = 6.0
-margin_right = 119.0
-margin_bottom = 24.0
-custom_fonts/font = SubResource( 2 )
-text = "New Card"
-flat = false
-items = [ "Normal Monster", null, 0, false, false, 0, 0, null, "", false, "Effect Monster", null, 0, false, false, 1, 0, null, "", false, "Fusion Monster", null, 0, false, false, 2, 0, null, "", false, "Ritual Monster", null, 0, false, false, 3, 0, null, "", false, "Spell", null, 0, false, false, 4, 0, null, "", false, "Trap", null, 0, false, false, 5, 0, null, "", false ]
-
 [node name="OpenMenuButton" type="MenuButton" parent="TextureRectTop"]
-margin_left = 126.0
+margin_left = 8.0
 margin_top = 6.0
-margin_right = 233.0
+margin_right = 115.0
 margin_bottom = 24.0
 focus_mode = 2
 custom_fonts/font = SubResource( 2 )
@@ -87,28 +77,34 @@ margin_right = 118.0
 margin_bottom = 52.0
 text = "Image"
 
-[node name="AttributeLabel" type="Label" parent="Control1/HBoxContainer"]
+[node name="TypeLabel" type="Label" parent="Control1/HBoxContainer"]
 margin_top = 60.0
 margin_right = 118.0
 margin_bottom = 82.0
-text = "Attribute"
+text = "Type"
 
-[node name="LevelLabel" type="Label" parent="Control1/HBoxContainer"]
+[node name="AttributeLabel" type="Label" parent="Control1/HBoxContainer"]
 margin_top = 90.0
 margin_right = 118.0
 margin_bottom = 112.0
-text = "Level"
+text = "Attribute"
 
-[node name="AtkLabel" type="Label" parent="Control1/HBoxContainer"]
+[node name="LevelLabel" type="Label" parent="Control1/HBoxContainer"]
 margin_top = 120.0
 margin_right = 118.0
 margin_bottom = 142.0
-text = "Attack"
+text = "Level"
 
-[node name="DefLabel" type="Label" parent="Control1/HBoxContainer"]
+[node name="AtkLabel" type="Label" parent="Control1/HBoxContainer"]
 margin_top = 150.0
 margin_right = 118.0
 margin_bottom = 172.0
+text = "Attack"
+
+[node name="DefLabel" type="Label" parent="Control1/HBoxContainer"]
+margin_top = 180.0
+margin_right = 118.0
+margin_bottom = 202.0
 text = "Defence"
 
 [node name="Control2" type="Control" parent="Control1"]
@@ -118,9 +114,9 @@ margin_right = 431.0
 margin_bottom = 296.0
 
 [node name="NameLineEdit" type="LineEdit" parent="Control1/Control2"]
-margin_top = 28.0
+margin_top = 27.0
 margin_right = 250.0
-margin_bottom = 53.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 250, 25 )
 
 [node name="ImageBtn" type="Button" parent="Control1/Control2"]
@@ -130,34 +126,44 @@ margin_bottom = 82.0
 rect_min_size = Vector2( 100, 25 )
 text = "Open"
 
-[node name="AttributeMenuButton" type="MenuButton" parent="Control1/Control2"]
+[node name="TypeMenuButton" type="MenuButton" parent="Control1/Control2"]
 margin_top = 87.0
 margin_right = 150.0
 margin_bottom = 112.0
+rect_min_size = Vector2( 150, 25 )
+text = "Select"
+flat = false
+items = [ "Normal Monster", null, 0, false, false, 0, 0, null, "", false, "Effect Monster", null, 0, false, false, 1, 0, null, "", false, "Fusion Monster", null, 0, false, false, 2, 0, null, "", false, "Ritual Monster", null, 0, false, false, 3, 0, null, "", false, "Spell", null, 0, false, false, 4, 0, null, "", false, "Trap", null, 0, false, false, 5, 0, null, "", false ]
+
+[node name="AttributeMenuButton" type="MenuButton" parent="Control1/Control2"]
+margin_top = 117.0
+margin_right = 150.0
+margin_bottom = 142.0
 rect_min_size = Vector2( 100, 25 )
+text = "Select"
 flat = false
 items = [ "DARK", null, 0, false, false, 0, 0, null, "", false, "DIVINE", null, 0, false, false, 1, 0, null, "", false, "EARTH", null, 0, false, false, 2, 0, null, "", false, "FIRE", null, 0, false, false, 3, 0, null, "", false, "LIGHT", null, 0, false, false, 4, 0, null, "", false, "WATER", null, 0, false, false, 5, 0, null, "", false, "WIND", null, 0, false, false, 6, 0, null, "", false ]
 
 [node name="LevelMenuButton" type="MenuButton" parent="Control1/Control2"]
-margin_top = 117.0
+margin_top = 147.0
 margin_right = 150.0
-margin_bottom = 142.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 100, 25 )
 focus_mode = 2
 flat = false
 items = [ "1", null, 0, false, false, 0, 0, null, "", false, "2", null, 0, false, false, 1, 0, null, "", false, "3", null, 0, false, false, 2, 0, null, "", false, "4", null, 0, false, false, 3, 0, null, "", false, "5", null, 0, false, false, 4, 0, null, "", false, "6", null, 0, false, false, 5, 0, null, "", false, "7", null, 0, false, false, 6, 0, null, "", false, "8", null, 0, false, false, 7, 0, null, "", false, "9", null, 0, false, false, 8, 0, null, "", false, "10", null, 0, false, false, 9, 0, null, "", false, "11", null, 0, false, false, 10, 0, null, "", false, "12", null, 0, false, false, 11, 0, null, "", false ]
 
 [node name="AtkLineEdit" type="LineEdit" parent="Control1/Control2"]
-margin_top = 147.0
+margin_top = 177.0
 margin_right = 106.0
-margin_bottom = 172.0
+margin_bottom = 202.0
 rect_min_size = Vector2( 100, 25 )
 text = "0"
 
 [node name="DefLineEdit" type="LineEdit" parent="Control1/Control2"]
-margin_top = 177.0
+margin_top = 207.0
 margin_right = 106.0
-margin_bottom = 202.0
+margin_bottom = 232.0
 rect_min_size = Vector2( 100, 25 )
 text = "0"
 
@@ -227,10 +233,10 @@ __meta__ = {
 }
 
 [node name="AttributeTexture" type="TextureRect" parent="CardTexture"]
-margin_left = 347.0
-margin_top = 451.0
-margin_right = 382.0
-margin_bottom = 486.0
+margin_left = 345.0
+margin_top = 450.0
+margin_right = 380.0
+margin_bottom = 485.0
 texture = ExtResource( 5 )
 expand = true
 
@@ -240,9 +246,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -199.0
-margin_top = 173.0
+margin_top = 172.0
 margin_right = 198.0
-margin_bottom = 195.0
+margin_bottom = 194.0
 texture = ExtResource( 4 )
 stretch_mode = 4
 
