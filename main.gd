@@ -65,7 +65,6 @@ var mainDirectory : String = ""
 var savePath : String = ""
 var cardArtworkPath : String = ""
 var pathsArray : Array = []
-var saveTimeDelay : float = 0.1
 
 
 func _ready() -> void:
@@ -140,7 +139,7 @@ func getDirectoryContents(path : String) -> void:
 	imageList.clear()
 	var dir = Directory.new()
 	if dir.open(path) == OK:
-		dir.list_dir_begin(true, true) # do not show folders, do not show hiidden files
+		dir.list_dir_begin(true, true)
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir(): # if not then it's a file, otherwise it's a folder
@@ -237,7 +236,7 @@ func on_save_pressed() -> void:
 		notificationDialog.popup()
 
 
-# Changes card artwork when pressed list item is pressed
+# Changes card artwork when list item is pressed
 func on_image_item_list_selected(value : int) -> void:
 	var artPath : String = cardArtworkPath + "/" + imageList.get_item_text(value)
 	on_file_selected(artPath)
