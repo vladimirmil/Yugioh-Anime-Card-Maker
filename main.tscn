@@ -159,6 +159,7 @@ margin_right = 106.0
 margin_bottom = 202.0
 rect_min_size = Vector2( 100, 25 )
 text = "0"
+align = 1
 
 [node name="DefLineEdit" type="LineEdit" parent="Control1/Control2"]
 margin_top = 207.0
@@ -166,6 +167,7 @@ margin_right = 106.0
 margin_bottom = 232.0
 rect_min_size = Vector2( 100, 25 )
 text = "0"
+align = 1
 
 [node name="RefreshArtworkListBtn" type="Button" parent="Control1"]
 margin_left = 339.0
@@ -203,40 +205,35 @@ margin_top = 62.0
 margin_right = 469.0
 margin_bottom = 642.0
 texture = ExtResource( 2 )
+expand = true
 
 [node name="AtkValueLabel" type="Label" parent="CardTexture"]
-margin_left = 41.0
-margin_top = 499.0
-margin_right = 177.0
-margin_bottom = 547.0
+margin_left = 36.0
+margin_top = 498.0
+margin_right = 179.0
+margin_bottom = 544.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="DefValueLabel" type="Label" parent="CardTexture"]
-margin_left = 222.0
-margin_top = 499.0
-margin_right = 358.0
-margin_bottom = 547.0
+margin_left = 219.0
+margin_top = 498.0
+margin_right = 362.0
+margin_bottom = 544.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AttributeTexture" type="TextureRect" parent="CardTexture"]
 margin_left = 345.0
-margin_top = 450.0
+margin_top = 441.0
 margin_right = 380.0
-margin_bottom = 485.0
+margin_bottom = 476.0
 texture = ExtResource( 5 )
 expand = true
 
@@ -246,17 +243,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -199.0
-margin_top = 172.0
+margin_top = 161.0
 margin_right = 198.0
-margin_bottom = 194.0
+margin_bottom = 183.0
 texture = ExtResource( 4 )
 stretch_mode = 4
 
 [node name="CardArtTexture" type="TextureRect" parent="CardTexture"]
 margin_left = 9.0
-margin_top = 10.0
-margin_right = 390.0
-margin_bottom = 416.0
+margin_top = 9.0
+margin_right = 389.0
+margin_bottom = 405.0
 expand = true
 
 [node name="OpenFileDialog" type="FileDialog" parent="."]
@@ -272,8 +269,8 @@ popup_exclusive = true
 window_title = "Open a File"
 mode = 0
 access = 2
-current_dir = "/Users/vladi/Documents/Yugioh Anime Card Maker"
-current_path = "/Users/vladi/Documents/Yugioh Anime Card Maker/"
+current_dir = "/Users/vladi/Documents/GitHub/Yugioh Anime Card Maker"
+current_path = "/Users/vladi/Documents/GitHub/Yugioh Anime Card Maker/"
 
 [node name="NotificationDialog" type="AcceptDialog" parent="."]
 anchor_left = 0.5
